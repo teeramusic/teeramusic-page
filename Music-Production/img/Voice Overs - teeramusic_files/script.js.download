@@ -1,0 +1,119 @@
+console.log('script loaded');
+// ===============================================
+// Audio Link Player
+// ===============================================
+var NOP = function() {};
+var $audio_links = $('a[data-audio]');
+var $audio = $('#audio');
+var audio = $audio[0];
+audio.icons = $audio_links.find('.play-button');
+audio.icon = {
+	removeClass: NOP,
+	addClass: NOP
+};
+
+audio.onerror = function() {
+	var i = setInterval(function() {
+		clearInterval(i);
+		audio.load();
+	}, 1e3);
+};
+
+var onCanPlayThrough = function() {
+	console.log('onplaythrough');
+	audio.oncanplaythrough = NOP;
+	audio.icon.removeClass('load');
+	audio.icon.addClass('playing');
+	audio.play();
+};
+var onStalled = function() {
+	console.log('onstalled');
+	audio.icon.removeClass('playing');
+	audio.icon.addClass('load');
+};
+audio.onstalled = onStalled;
+audio.onwaiting = onStalled;
+
+audio.onplaying = function() {
+	console.log('onplaying');
+	audio.icon.removeClass('load');
+	audio.icon.addClass('playing');
+};
+
+audio.onended = function() {
+	console.log('ended');
+	audio.pause();
+};
+audio.onpause = function() {
+	console.log('onpause');
+	audio.icon.removeClass('load');
+	audio.icon.removeClass('playing');
+};
+
+$audio_links.click(function(event) {
+	event.preventDefault();
+	if (audio.src === atob(this.getAttribute('data-audio'))) {
+		console.log('audio.src === this.href');
+		if (audio.timeout) {
+			console.log('clear timeout');
+			audio.icon.removeClass('load');
+			clearInterval(audio.timeout);
+			audio.timeout = 0;
+		} else if (audio.paused) {
+			audio.play();
+		} else {
+			audio.pause();
+		}
+	} else {
+		audio.pause();
+		audio.icons.removeClass('load');
+		audio.icons.removeClass('playing');
+		audio.icon = $(this).find('.play-button');
+		audio.icon.addClass('load');
+		audio.src = atob(this.getAttribute('data-audio'));
+		audio.load();
+		if (audio.timeout) {
+			clearInterval(audio.timeout);
+			audio.timeout = 0;
+		}
+		audio.timeout = setInterval(function() {
+			clearInterval(audio.timeout);
+			audio.timeout = 0;
+			if (audio.readyState === 4) {
+				onCanPlayThrough();
+			} else {
+				audio.oncanplaythrough = onCanPlayThrough;
+			}
+		}, 1e3);
+	}
+});
+
+
+// ===============================================
+// ISOTOPE
+// ===============================================
+
+var $grid = $('.isotope-grid');
+if ($grid.length > 0) {
+	$grid.isotope({
+		// options
+		itemSelector: '.isotope-item',
+		layoutMode: 'fitRows'
+	});
+
+	$grid.on('arrangeComplete', function(event, filteredItems) {
+			if(audio.src && audio.paused){
+				var item = $audio_links.find('[data-audio='+btoa(audio.src)+']');
+				console.log(item);
+			}
+		}
+	);
+
+	$('.isotope-filter-button').click(function() {
+		var filterValue = $(this).attr('data-filter');
+		if (filterValue === '.isotope-filter-all') filterValue = '*';
+		$grid.isotope({
+			filter: filterValue
+		});
+	});
+}
