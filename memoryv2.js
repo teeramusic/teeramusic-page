@@ -190,7 +190,7 @@ function startGame() {
     }, 1000);
 
     buttons.forEach((button, index) => {
-        button.disabled = false;
+        button.disabled = true;
         button.onclick = () => {
             lightUpButton(index);
             if (gameStarted) {
