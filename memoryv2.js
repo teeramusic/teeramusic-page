@@ -148,10 +148,17 @@ function checkInput(buttonIndex) {
             }, 1000);
         }
     } else {
+        saveHighScore();
         gameOver();
     }
 }
-
+function saveHighScore() {
+    if (sequence.length - 1 > highScore) {
+        highScore = sequence.length - 1;
+        setCookie("highScore", highScore, 365);
+        updateHighScoreDisplay();
+    }
+}
 function gameOver() {
     gameStarted = false;
 
