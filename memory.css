@@ -1,0 +1,126 @@
+body {
+    font-family: sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f0f0f0;
+    /* Lighter background for contrast */
+}
+
+#game-container {
+    text-align: center;
+    background-color: #e0e0e0;
+    /* Slightly darker grid background */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#button-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+.button:disabled{
+    color: rgba(0, 0, 0, 0.2);
+    opacity: 0.7;
+    filter: brightness(0.6);
+}
+.button {
+    width: 100px;
+    height: 100px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, filter 0.3s ease;
+    font-size: 20px;
+    font-weight: bold;
+    color: rgba(0, 0, 0, 0.2);
+    opacity: 0.9;
+    filter: brightness(0.85);
+    /* Make buttons slightly darker initially */
+    border: 1px solid #eee;
+    /* Add a faint gray border */
+    outline: none;
+    /* Remove default outline/border on click */
+}
+
+.button.lit {
+    filter: saturate(1) brightness(1);
+    /* Lighten when lit */
+}
+.button.black-key.lit {
+    filter: saturate(1) brightness(1);
+    /* Lighten when lit */
+}
+
+#start-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 20px 10px 20px 0;
+    outline: none;
+    animation: wiggle 1s ease-in-out infinite; /* Apply wiggle animation */
+}
+
+
+#start-button:hover,
+#start-button:focus {
+  animation: none; /* Stop wiggle animation on hover/focus */
+}
+
+@keyframes wiggle {
+  0% { transform: translateX(0px); }
+  15% { transform: rotate(-5deg); }
+  30% { transform:  rotate(5deg); }
+  45% { transform:  rotate(-3deg); }
+  60% { transform:  rotate(3deg); }
+  75% { transform: rotate(-1deg); }
+  100% { transform: rotate(1deg); }
+}
+
+
+
+
+#message {
+    margin-bottom: 10px;
+}
+
+
+.black-key {
+  /* opacity: 0.9; */
+  filter: brightness(0.8) saturate(0.8); /* Reduce luminance and saturation by 30% */
+}
+
+
+/*
+f7e49a
+fece79
+f8a656
+f48170
+f38193
+f391bc
+e4b7d5
+8b8bc3
+94cae3
+a0d9d9
+97d1a9
+cae089
+
+efd31a
+f4ae1a
+f36b28
+ef4924
+ee2f44
+ec468b
+b856a1
+915ba6
+518bc9
+27beb6
+67bf6b
+a1cd49
+*/
