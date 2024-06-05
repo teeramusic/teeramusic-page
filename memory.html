@@ -4,7 +4,18 @@
 <head>
 	<title>Memory Game</title>
 	<meta name="viewport" content="width=device-width, initial-scale=0.8, user-scalable=no" />
-	<link rel="stylesheet" href="memory.css">
+	<link rel="stylesheet" href="memoryv2.css">
+
+	<meta property="og:title" content="Memory Game - Test Your Musical Recall!" />
+	<meta property="og:description" content="Memorize the sequence of notes and test your ear in this fun musical memory game.  Can you beat the high score?" />
+	<!-- <meta property="og:image" content="[Link to a relevant image, e.g., a screenshot of your game]" /> -->
+	<meta property="og:url" content="https://teeramusic.com/memory.html" />
+	<meta property="og:type" content="website" />
+	<!-- <meta name="twitter:card" content="summary_large_image" /> -->
+	<meta name="twitter:title" content="Memory Game - Test Your Musical Recall!" />
+	<meta name="twitter:description" content="Memorize the sequence of notes and test your ear in this fun musical memory game.  Can you beat the high score?" />
+	<!-- <meta name="twitter:image" content="[Link to a relevant image]" />
+	<meta name="twitter:site" content="[Your Twitter handle if applicable]" /> -->
 </head>
 
 <body>
@@ -12,30 +23,30 @@
 		<h1>Memory Game</h1>
 		<div id="message">Click Start to Begin</div>
 		<div id="high-score">High Score: 0</div>
-		<button id="start-button">Start</button>
+		<button id="start-button" class="wiggle">Start</button>
 		<label for="octave-toggle">Random Octaves:</label>
 		<input type="checkbox" id="octave-toggle">
 		<label for="random-order-toggle">Random Order:</label>
 		<input type="checkbox" id="random-order-toggle">
 		<div id="button-grid">
-	      <button class="button white-key" data-note="C" style="background-color: #f7e49a;">C</button>
-	      <button class="button black-key" data-note="C#" style="background-color: #fece79;">C#</button>
-	      <button class="button white-key" data-note="D" style="background-color: #f8a656;">D</button>
-	      <button class="button black-key" data-note="D#" style="background-color: #f48170;">D#</button>
-	      <button class="button white-key" data-note="E" style="background-color: #f38193;">E</button>
-	      <button class="button white-key" data-note="F" style="background-color: #f391bc;">F</button>
-	      <button class="button black-key" data-note="F#" style="background-color: #e4b7d5;">F#</button>
-	      <button class="button white-key" data-note="G" style="background-color: #8b8bc3;">G</button>
-	      <button class="button black-key" data-note="G#" style="background-color: #94cae3;">G#</button>
-	      <button class="button white-key" data-note="A" style="background-color: #a0d9d9;">A</button>
-	      <button class="button black-key" data-note="A#" style="background-color: #97d1a9;">A#</button>
-	      <button class="button white-key" data-note="B" style="background-color: #cae089;">B</button>
-	    </div>
+			<button class="button white-key" data-note="C" style="background-color: #f7e49a;">C</button>
+			<button class="button black-key" data-note="C#" style="background-color: #fece79;">C#</button>
+			<button class="button white-key" data-note="D" style="background-color: #f8a656;">D</button>
+			<button class="button black-key" data-note="D#" style="background-color: #f48170;">D#</button>
+			<button class="button white-key" data-note="E" style="background-color: #f38193;">E</button>
+			<button class="button white-key" data-note="F" style="background-color: #f391bc;">F</button>
+			<button class="button black-key" data-note="F#" style="background-color: #e4b7d5;">F#</button>
+			<button class="button white-key" data-note="G" style="background-color: #8b8bc3;">G</button>
+			<button class="button black-key" data-note="G#" style="background-color: #94cae3;">G#</button>
+			<button class="button white-key" data-note="A" style="background-color: #a0d9d9;">A</button>
+			<button class="button black-key" data-note="A#" style="background-color: #97d1a9;">A#</button>
+			<button class="button white-key" data-note="B" style="background-color: #cae089;">B</button>
+		</div>
 	</div>
 	</div>
 	</div>
 
-	<script src="memoryv2.js"></script>
+	<script src="memoryv3.js"></script>
 </body>
 
 </html>
